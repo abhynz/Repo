@@ -24,10 +24,10 @@ public class BaseClass {
 	}
 
 	@Parameters("browserType")
-	public void initialiseBaseSetup(@Optional("firefox") String browserType, String URL){
+	public void initialiseBaseSetup(@Optional("firefox") String browserType){
 		try{
 			System.out.println(" ------- Initiating Driver -----------");
-			initiateDriver(browserType,URL);
+			initiateDriver(browserType);
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		}
 		catch(Exception e)
@@ -37,7 +37,7 @@ public class BaseClass {
 	}
 
 
-	public void initiateDriver(String browser, String Url) {
+	public void initiateDriver(String browser) {
 	if(browser.equalsIgnoreCase("firefox")){
 		driver = new FirefoxDriver();
 	}
@@ -45,8 +45,8 @@ public class BaseClass {
 		System.setProperty("webdriver.chrome.driver", "Drivers//chromedriver.exe");
 		System.out.println( " --------------- Chrome Driver initiation");
 		driver = new ChromeDriver();
-		driver.get(Url);
-		log.info("************* LAUNCHED :: "+Url);
+		/*driver.get(Url);
+		log.info("************* LAUNCHED :: "+Url);*/
 	}
 		
 	}

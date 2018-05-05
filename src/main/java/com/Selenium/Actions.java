@@ -1,28 +1,30 @@
 package com.Selenium;
 
-import java.util.Properties;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-public class Actions {
+
+public class Actions extends Sync {
 
 	WebDriver driver;
-	
+	WebElement ele;
 	Logger log = Logger.getLogger("Actions");
-	
-	public Actions(WebDriver driver)
-	{
-		this.driver= driver;
+	boolean s;
+
+
+	public Actions(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
 	}
-	
-	
-	public void safeType(By locator, String value)
+
+	public void safeType(By locator, String value, int waitTime)
 	{
-		driver.findElement(locator).sendKeys(value);
-		log.info("Entered :: "+ value);
+		s = isElementDisplayed(locator,waitTime);
+		if(s){
+			driver.findElement(locator).sendKeys(value);
+			log.info("Entered :: "+value);
+		}
 	}
-	
-	
 }

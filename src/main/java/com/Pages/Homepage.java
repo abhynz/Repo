@@ -1,6 +1,7 @@
 package com.Pages;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -12,20 +13,25 @@ public class Homepage extends Actions implements Locators{
 
 	WebDriver driver;
 	WebElement element;
+	//Actions ae;
 	Logger log = Logger.getLogger("Homepage");
 	
-	public Homepage(WebDriver driver) {
-		super(driver);
-		this.driver = driver;
+	
+
+	public Homepage(WebDriver driver) //getDriver()
+	{
+		super(driver); //getDriver();
+		//this.driver = driver;
 	}
 
-	public void txtbox_Mobilenumber(String value)
+	public void txtbox_Mobilenumber(String value, int timetoWait)
 	{
-		safeType(Locators.hp_input_Mobilenumber,value);
-		log.info("Entered text :: "+value );
-		
+		System.out.println("Trying to enter Mobile number");
+		safeType(Locators.hp_input_Mobilenumber,value,timetoWait);
 	}
 	
+
+
 	public WebElement txtbox_Operator()
 	{
 		element = driver.findElement(Locators.hp_input_Operator);
